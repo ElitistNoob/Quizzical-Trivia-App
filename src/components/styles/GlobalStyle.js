@@ -83,11 +83,6 @@ export const GlobalStyle = createGlobalStyle`
     cursor: pointer;
   }
 
-  button:hover {
-    /* opacity: .85; */
-    transform:scale(.98)
-  }
-
   label {
     font-weight: var(--fw-bold);
     color: var(--clr-primary);
