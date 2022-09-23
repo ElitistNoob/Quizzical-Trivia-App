@@ -1,6 +1,7 @@
 // Hooks
 import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
+import BarLoader from "react-spinners/BarLoader";
 // Sytled-components
 import { GameScreenStyled } from "./styles/GameScreen.Styled";
 import { QuestionsStyled } from "./styles/Questions.Styled";
@@ -14,9 +15,11 @@ export default function GameScreen(props) {
   const [questions, setQuestions] = useState([]);
   const [gameEnded, setGameEnded] = useState(false);
   const [score, setScore] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   // Fetch Questions from API
   useEffect(() => {
+    setLoading(true);
     const category = props.formData.category;
     const difficulty = props.formData.difficulty;
     const quantity = props.formData.questionNum;
@@ -25,6 +28,7 @@ export default function GameScreen(props) {
         `https://opentdb.com/api.php?amount=5&category=${category}&difficulty=${difficulty}&amount=${quantity}`
       );
       const data = await res.json();
+      setLoading(false);
       newQuestions(data.results);
     }
     fetchQuestions();
@@ -166,7 +170,9 @@ export default function GameScreen(props) {
       </QuestionsStyled>
     );
   });
-  return (
+  return loading ? (
+    <BarLoader color={"var(--clr-primary)"} loading={loading} size={150} />
+  ) : (
     <GameScreenStyled>
       <Blob />
       {questionsHtml}

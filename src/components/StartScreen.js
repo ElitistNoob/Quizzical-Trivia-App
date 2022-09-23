@@ -1,5 +1,6 @@
 // Hooks
 import { useEffect, useState } from "react";
+import BarLoader from "react-spinners/BarLoader";
 // Styled-components
 import { StartScreenStyled } from "./styles/StartScreen.Styled";
 // components
@@ -7,11 +8,17 @@ import Blob from "./Blob";
 
 export default function StartScreen(props) {
   const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetch("https://opentdb.com/api_category.php")
-      .then(res => res.json())
-      .then(data => setCategories(data.trivia_categories));
+    setLoading(true);
+    async function fetchSettings() {
+      const res = await fetch("https://opentdb.com/api_category.php");
+      const data = await res.json();
+      setLoading(false);
+      return setCategories(data.trivia_categories);
+    }
+    fetchSettings();
   }, []);
 
   const categoryMenu = categories.map(category => [
@@ -20,7 +27,9 @@ export default function StartScreen(props) {
     </option>,
   ]);
 
-  return (
+  return loading ? (
+    <BarLoader color={"var(--clr-primary)"} loading={loading} size={150} />
+  ) : (
     <StartScreenStyled>
       <Blob />
       <h1>Quizzical</h1>
