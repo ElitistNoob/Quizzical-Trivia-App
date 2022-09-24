@@ -115,19 +115,22 @@ export default function GameScreen(props) {
 
   // renders question's choices
   function getAnswerHtml(arr) {
-    return arr.answers.map(answer => (
-      <p
-        key={answer.id}
-        id={answer.id}
-        onClick={() => selectAnswer(arr.id, answer.id)}
-        style={{
-          backgroundColor: colorLogic(answer, arr),
-          borderColor: correctAnswerShown(answer, arr),
-        }}
-      >
-        {answer.value}
-      </p>
-    ));
+    return arr.answers.map(answer => {
+      let value = answer.value;
+      return (
+        <p
+          key={answer.id}
+          id={answer.id}
+          onClick={() => selectAnswer(arr.id, answer.id)}
+          style={{
+            backgroundColor: colorLogic(answer, arr),
+            borderColor: correctAnswerShown(answer, arr),
+          }}
+        >
+          {value.substring(value.indexOf("&quot;") + 1)}
+        </p>
+      );
+    });
   }
 
   function selectAnswer(Arr, id) {
@@ -164,7 +167,13 @@ export default function GameScreen(props) {
   const questionsHtml = questions.map(question => {
     return (
       <QuestionsStyled key={question.id}>
-        <h3>{question.question}</h3>
+        <h3>
+          {question.question
+            .replaceAll("&quot;", '"')
+            .replaceAll("&#039;", "'")
+            .replaceAll("&sup2;", "")
+            .replaceAll("Pok&eacute;", "Poke")}
+        </h3>
         <div>{getAnswerHtml(question)}</div>
         <hr />
       </QuestionsStyled>

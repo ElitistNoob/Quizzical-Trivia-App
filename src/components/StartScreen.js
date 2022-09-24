@@ -12,7 +12,7 @@ export default function StartScreen(props) {
 
   useEffect(() => {
     setLoading(true);
-    setTimeout(() => setLoading(false), 1000);
+    setTimeout(() => setLoading(false), 1200);
     async function fetchSettings() {
       const res = await fetch("https://opentdb.com/api_category.php");
       const data = await res.json();
