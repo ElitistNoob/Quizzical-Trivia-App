@@ -155,13 +155,15 @@ export default function GameScreen(props) {
 
   function checkAnswers() {
     setGameEnded(true);
-    questions.map(question =>
-      question.answers.forEach(item => {
-        if (item.isSelected && item.isCorrectAnswer) {
-          return setScore(prevScore => prevScore + 1);
-        }
-      })
-    );
+    if (!gameEnded) {
+      questions.map(question =>
+        question.answers.forEach(item => {
+          if (item.isSelected && item.isCorrectAnswer) {
+            return setScore(prevScore => prevScore + 1);
+          }
+        })
+      );
+    }
   }
 
   const questionsHtml = questions.map(question => {
