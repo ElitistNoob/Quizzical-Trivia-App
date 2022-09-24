@@ -27,6 +27,12 @@ export const StartScreenStyled = styled.div`
     border-radius: 8px;
   }
 
+  @media (max-width: 440px) {
+    form {
+      padding: 2em;
+    }
+  }
+
   form > * {
     margin-bottom: 2em;
     display: flex;

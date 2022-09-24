@@ -1,6 +1,6 @@
 // Hooks
 import { useEffect, useState } from "react";
-import BarLoader from "react-spinners/BarLoader";
+import RotateLoader from "react-spinners/RotateLoader";
 // Styled-components
 import { StartScreenStyled } from "./styles/StartScreen.Styled";
 // components
@@ -12,10 +12,10 @@ export default function StartScreen(props) {
 
   useEffect(() => {
     setLoading(true);
+    setTimeout(() => setLoading(false), 2000);
     async function fetchSettings() {
       const res = await fetch("https://opentdb.com/api_category.php");
       const data = await res.json();
-      setLoading(false);
       return setCategories(data.trivia_categories);
     }
     fetchSettings();
@@ -28,7 +28,10 @@ export default function StartScreen(props) {
   ]);
 
   return loading ? (
-    <BarLoader color={"var(--clr-primary)"} loading={loading} size={150} />
+    <>
+      <Blob />
+      <RotateLoader color={"var(--clr-primary)"} loading={loading} size={15} />
+    </>
   ) : (
     <StartScreenStyled>
       <Blob />
