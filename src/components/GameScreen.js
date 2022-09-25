@@ -34,24 +34,20 @@ export default function GameScreen(props) {
     fetchQuestions();
   }, [props.gameState]);
 
-  // Fisher-Yates shuffle algorithm - Used in the next function to shuffles the returned array
-  function shuffleAnswers(arr) {
-    let newPos, temp;
-    for (let i = arr.length - 1; i > 0; i--) {
-      newPos = Math.floor(Math.random() * (i + 1));
-      temp = arr[newPos];
-      arr[newPos] = arr[i];
-      arr[i] = temp;
-    }
-    return arr;
-  }
-
   // combines data.results.correct_answer
   // & data.results.incorrect_answers using concat and return as new array
+  // Fisher-Yates shuffle algorithm - Used to shuffles the array before returning it.
   function concatAnswers(arr) {
-    const mergedAnswerArrays = shuffleAnswers(
-      [arr.correct_answer].concat(arr.incorrect_answers)
+    const mergedAnswerArrays = [arr.correct_answer].concat(
+      arr.incorrect_answers
     );
+    let newPos, temp;
+    for (let i = mergedAnswerArrays.length - 1; i > 0; i--) {
+      newPos = Math.floor(Math.random() * (i + 1));
+      temp = mergedAnswerArrays[newPos];
+      mergedAnswerArrays[newPos] = mergedAnswerArrays[i];
+      mergedAnswerArrays[i] = temp;
+    }
     return mergedAnswerArrays;
   }
 
