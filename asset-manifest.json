@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.js": "/Quizzical-Trivia-App/static/js/main.95fcc0f0.js",
+    "main.js": "/Quizzical-Trivia-App/static/js/main.e7a95a53.js",
     "static/js/787.9a6d5f81.chunk.js": "/Quizzical-Trivia-App/static/js/787.9a6d5f81.chunk.js",
     "static/media/blob1.svg": "/Quizzical-Trivia-App/static/media/blob1.1d92c27e72e9bb5231df48d6d5467284.svg",
     "static/media/blob2.svg": "/Quizzical-Trivia-App/static/media/blob2.02264d92e182cddf76397c59ef1eaf52.svg",
     "static/media/restart-alt-rounded.svg": "/Quizzical-Trivia-App/static/media/restart-alt-rounded.5e1bc4e33b943cdaa28ead392cbb0ad0.svg",
     "index.html": "/Quizzical-Trivia-App/index.html",
     "static/media/chevron-down.svg": "/Quizzical-Trivia-App/static/media/chevron-down.9f094d77c0993b5af2c188ad0c7733e0.svg",
-    "main.95fcc0f0.js.map": "/Quizzical-Trivia-App/static/js/main.95fcc0f0.js.map",
+    "main.e7a95a53.js.map": "/Quizzical-Trivia-App/static/js/main.e7a95a53.js.map",
     "787.9a6d5f81.chunk.js.map": "/Quizzical-Trivia-App/static/js/787.9a6d5f81.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.95fcc0f0.js"
+    "static/js/main.e7a95a53.js"
   ]
 }
