@@ -44,7 +44,7 @@ export default function StartScreen(props) {
           value={props.formData.questionNum}
           type="number"
           min="1"
-          max="20"
+          max="10"
           name="questionNum"
           id="questionNum"
         />
