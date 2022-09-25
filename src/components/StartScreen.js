@@ -43,6 +43,8 @@ export default function StartScreen(props) {
           onChange={props.formUpdate}
           value={props.formData.questionNum}
           type="number"
+          min="1"
+          max="20"
           name="questionNum"
           id="questionNum"
         />
@@ -54,7 +56,7 @@ export default function StartScreen(props) {
           id="category"
           required
         >
-          <option value="">-- Choose a difficulty --</option>
+          <option value="">-- Choose a category --</option>
           {categoryMenu}
         </select>
         <label htmlFor={props.formData.difficulty}>Difficulty</label>
@@ -65,7 +67,7 @@ export default function StartScreen(props) {
           id="difficulty"
           required
         >
-          <option value="">-- Choose a category --</option>
+          <option value="">-- Choose a difficulty --</option>
           <option value="easy">Noob</option>
           <option value="medium">Intermediate</option>
           <option value="hard">Expert</option>

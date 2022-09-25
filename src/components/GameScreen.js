@@ -127,7 +127,11 @@ export default function GameScreen(props) {
             borderColor: correctAnswerShown(answer, arr),
           }}
         >
-          {value.substring(value.indexOf("&quot;") + 1)}
+          {value
+            .replaceAll("&quot;", '"')
+            .replaceAll("&#039;", "'")
+            .replaceAll("&sup2;", "")
+            .replaceAll("Pok&eacute;", "Poke")}
         </p>
       );
     });
